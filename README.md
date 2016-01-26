@@ -8,4 +8,32 @@ Fork this repo, add your solution and documentation on how to compile and run yo
 
 Obviously, we are looking for a fresh solution, not based on others' code.
 
+---
 
+# Usage
+
+```bash
+go get github.com/jatinn/quiz
+cd $GOPATH/src/github.com/jatinn/quiz
+go build
+./quiz word.list
+```
+
+## Notes
+1. Supports concurrency. By default spawns workers equal to the number of cores available.
+2. Can modify number of worker with a cpu multiplier flag.
+
+	```bash
+	./quiz -m=10 word.list
+	```
+
+3. Processes the complete list so that if there are multiple compoun words with the same length, it will list all of them.
+4. List does no need to be sorted and handles unicode as well.
+
+	```bash
+	./quiz sample.list
+	Found 2 longest compund words of length 5:
+		 abcde
+		 ↴↴↴↴↴
+	Time to completion: 359.208µs
+	```
